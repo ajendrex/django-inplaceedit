@@ -57,7 +57,7 @@ class BaseAdaptorField(object):
         self.config['obj_id'] = unicode(self.obj.pk)
         self.config['field_name'] = self.field_name_render
         self.config['app_label'] = self.model._meta.app_label
-        self.config['module_name'] = self.model._meta.module_name
+        self.config['model_name'] = self.model._meta.model_name
         self.config['filters_to_show'] = filters_to_show
         self.config['can_auto_save'] = self.config.get('can_auto_save', 1)
 
