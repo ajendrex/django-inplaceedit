@@ -106,7 +106,7 @@ class BaseAdaptorField(object):
         return config
 
     def get_form_class(self):
-        return modelform_factory(self.model)
+        return modelform_factory(self.model, exclude=())
 
     def get_form(self):
         form_class = self.get_form_class()
