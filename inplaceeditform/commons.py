@@ -70,7 +70,7 @@ def apply_filters(value, filters, load_tags=None):
 
 def import_module(name, package=None):
     try:
-        from django.utils.importlib import import_module
+        from importlib import import_module
         return import_module(name, package)
     except ImportError:
         path = [m for m in name.split('.')]
