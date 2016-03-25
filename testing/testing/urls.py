@@ -13,16 +13,18 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this programe.  If not, see <http://www.gnu.org/licenses/>.
 
+from django.views import static
 from django.conf import settings
 try:
-    from django.conf.urls import include, patterns, url
+    from django.conf.urls import include, url
 except ImportError:  # Django < 1.4
-    from django.conf.urls.defaults import include, patterns, url
+    from django.conf.urls.defaults import include, url
 
 from django.contrib import admin
 from django.core.urlresolvers import reverse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+from django.views.i18n import javascript_catalog
 
 admin.autodiscover()
 
@@ -30,13 +32,13 @@ js_info_dict = {
     'packages': ('django.conf',),
 }
 
-urlpatterns = patterns('',
+urlpatterns = [
     url(r'^inplaceeditform/', include('inplaceeditform.urls')),
-    url(r'^jsi18n/$', 'django.views.i18n.javascript_catalog', js_info_dict),
+    url(r'^jsi18n/$', javascript_catalog, js_info_dict),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^multimediaresources/', include('testing.multimediaresources.urls')),
     url(r'^unusualfields/', include('testing.unusual_fields.urls')),
-)
+]
 
 
 def index(request):
@@ -51,27 +53,27 @@ def index(request):
                               context,
                               context_instance=RequestContext(request))
 
-urlpatterns += patterns('',
-    url(r'^$', index))
+urlpatterns += [
+    url(r'^$', index)]
 
 if 'testing.inplace_transmeta' in settings.INSTALLED_APPS:
-    urlpatterns += patterns('',
+    urlpatterns += [
         url(r'^news/', include('testing.inplace_transmeta.urls')),
-    )
+    ]
 
 if 'testing.example_extra_fields' in settings.INSTALLED_APPS:
-    urlpatterns += patterns('',
+    urlpatterns += [
         url(r'^extra_fields/', include('testing.example_extra_fields.urls'))
-    )
+    ]
     if 'ajax_select' in settings.INSTALLED_APPS:
         from ajax_select import urls as ajax_select_urls
-        urlpatterns += patterns('',
+        urlpatterns += [ 
             url(r'^ajax_select/', include(ajax_select_urls))
-        )
+        ]
 
-urlpatterns += patterns('',
-    (r'^%s(?P<path>.*)$' % settings.MEDIA_URL[1:],
-     'django.views.static.serve',
+urlpatterns += [
+    url(r'^%s(?P<path>.*)$' % settings.MEDIA_URL[1:],
+     static.serve,
      {'document_root': settings.MEDIA_ROOT,
       'show_indexes': True}),
-)
+]

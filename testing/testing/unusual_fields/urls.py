@@ -14,12 +14,13 @@
 # along with this programe.  If not, see <http://www.gnu.org/licenses/>.
 
 try:
-    from django.conf.urls import include, patterns, url
+    from django.conf.urls import include, url
 except ImportError:  # Django < 1.4
-    from django.conf.urls.defaults import include, patterns, url
+    from django.conf.urls.defaults import include, url
 
+from testing.unusual_fields import views
 
-urlpatterns = patterns('testing.unusual_fields.views',
-    url(r'^$', 'unusual_index', name='unusual_index'),
-    url(r'^(?P<unusual_id>\w+)/$', 'unusual_edit', name="unusual_edit"),
-)
+urlpatterns = [
+    url(r'^$', views.unusual_index, name='unusual_index'),
+    url(r'^(?P<unusual_id>\w+)/$', views.unusual_edit, name="unusual_edit"),
+]

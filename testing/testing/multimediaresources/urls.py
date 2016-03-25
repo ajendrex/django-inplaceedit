@@ -14,12 +14,13 @@
 # along with this programe.  If not, see <http://www.gnu.org/licenses/>.
 
 try:
-    from django.conf.urls import include, patterns, url
+    from django.conf.urls import include, url
 except ImportError:  # Django < 1.4
-    from django.conf.urls.defaults import include, patterns, url
+    from django.conf.urls.defaults import include, url
 
+from testing.multimediaresources import views
 
-urlpatterns = patterns('testing.multimediaresources.views',
-    url(r'^$', 'multimediaresources_index', name='multimediaresources_index'),
-    url(r'^(?P<resource_id>\w+)/$', 'multimediaresources_edit', name="multimediaresources_edit"),
-)
+urlpatterns = [
+    url(r'^$', views.multimediaresources_index, name='multimediaresources_index'),
+    url(r'^(?P<resource_id>\w+)/$', views.multimediaresources_edit, name="multimediaresources_edit"),
+]
