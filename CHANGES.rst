@@ -1,13 +1,27 @@
 Releases
 ========
 
-1.3.1 (2013-10-??)
+1.4.1 (2015-08-30)
 ------------------
 
+* Details
+
+1.4.0 (2015-08-30)
+------------------
+
+* Django 1.7 and 1.8 compatible
+* Relocation repository to a django-inplaceedit organization
 * Now the enable and disable actions of jquery.inplaceeditform.js can be overwritten
 * Now there is a template, this is a easy way to add or modify options in the invocation of the jQuery plugin
+* Improve the error report
+* Fix error with polish language
 * Fix an error in the spanish translation
 * Added Brazilian Portuguese translation
+* Custome the widgets via js (transformField function)
+* Thanks to:
+    * `dnlknet <https://github.com/dnlknet>`_
+    * `cericoda <https://github.com/cericoda>`_
+    * `Jón Levy <https://github.com/busla>`_
 
 
 1.3.0 (2013-10-04)

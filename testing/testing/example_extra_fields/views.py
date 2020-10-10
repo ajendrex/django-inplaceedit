@@ -1,5 +1,6 @@
-# Copyright (c) 2010-2013 by Yaco Sistemas <goinnn@gmail.com> or <pmartin@yaco.es>
-#
+# -*- coding: utf-8 -*-
+# Copyright (c) 2010-2013 by Yaco Sistemas <goinnn@gmail.com>
+#               2015 by Pablo Martín <goinnn@gmail.com>
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Lesser General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
@@ -12,7 +13,6 @@
 #
 # You should have received a copy of the GNU Lesser General Public License
 # along with this programe.  If not, see <http://www.gnu.org/licenses/>.
-import sys
 
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
@@ -29,6 +29,5 @@ def extra_index(request):
 def extra_edit(request, resource_id):
     resource = get_object_or_404(Resource, pk=resource_id)
     return render_to_response('extra_fields/edit.html',
-                              {'resource': resource,
-                               'python_version': sys.version_info[0]},
+                              {'resource': resource},
                               context_instance=RequestContext(request))

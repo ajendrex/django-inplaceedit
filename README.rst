@@ -7,17 +7,19 @@ django-inplaceedit
 Information
 ===========
 
-.. image:: https://travis-ci.org/Yaco-Sistemas/django-inplaceedit.png?branch=master
-    :target: https://travis-ci.org/Yaco-Sistemas/django-inplaceedit
+.. image:: https://travis-ci.org/django-inplaceedit/django-inplaceedit.png?branch=master
+    :target: https://travis-ci.org/django-inplaceedit/django-inplaceedit
 
-.. image:: https://coveralls.io/repos/Yaco-Sistemas/django-inplaceedit/badge.png?branch=master
-    :target: https://coveralls.io/r/Yaco-Sistemas/django-inplaceedit
+.. image:: https://coveralls.io/repos/django-inplaceedit/django-inplaceedit/badge.png?branch=master
+    :target: https://coveralls.io/r/django-inplaceedit/django-inplaceedit
 
 .. image:: https://badge.fury.io/py/django-inplaceedit.png
     :target: https://badge.fury.io/py/django-inplaceedit
 
-.. image:: https://pypip.in/d/django-inplaceedit/badge.png
-    :target: https://pypi.python.org/pypi/django-inplaceedit
+.. image:: https://readthedocs.org/projects/django-inplaceedit/badge/?version=latest
+    :target: https://readthedocs.org/projects/django-inplaceedit/?badge=latest
+    :alt: Documentation Status
+
 
 Inplace Edit Form is a Django application that allows you to inline edition of some data from the database
 
@@ -29,7 +31,7 @@ Demo (this video use a very old version of django-inplaceedit and django-inplace
 
 Video Demo, of django-inplaceedit, `django-inplaceedit-extra-fields <http://pypi.python.org/pypi/django-inplaceedit-extra-fields>`_ and `django-inlinetrans <http://pypi.python.org/pypi/django-inlinetrans>`_ (Set full screen mode to view it correctly)
 
-.. image:: https://github.com/Yaco-Sistemas/django-inplaceedit/raw/master/video-frame.png
+.. image:: https://github.com/django-inplaceedit/django-inplaceedit/raw/master/video-frame.png
    :target: http://youtu.be/_EjisXtMy_Y?t=34s
 
 
@@ -58,4 +60,4 @@ Development
 You can get the bleeding edge version of django-inplaceedit by doing a clone
 of its git repository::
 
-  git clone git://github.com/Yaco-Sistemas/django-inplaceedit.git
+  git clone git://github.com/django-inplaceedit/django-inplaceedit.git

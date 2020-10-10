@@ -1,5 +1,6 @@
-# Copyright (c) 2010-2013 by Yaco Sistemas <goinnn@gmail.com> or <pmartin@yaco.es>
-#
+# -*- coding: utf-8 -*-
+# Copyright (c) 2010-2013 by Yaco Sistemas <goinnn@gmail.com>
+#               2015 by Pablo Martín <goinnn@gmail.com>
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Lesser General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
@@ -28,7 +29,7 @@ from django.test import TestCase
 from django.test.client import Client
 
 from inplaceeditform import settings as inplace_settings
-from inplaceeditform.commons import get_adaptor_class
+from inplaceeditform.commons import get_adaptor_class, get_module_name
 
 from testing.inplace_transmeta.models import News
 from testing.multimediaresources.models import Resource
@@ -58,7 +59,7 @@ class InplaceTestCase(TestCase):
         client = client or self.__client_login()
         obj = obj or model.objects.all()[0]
         self.assertEqual(model, obj.__class__)
-        module_name = model._meta.module_name
+        module_name = get_module_name(model)
         app_label = model._meta.app_label
         field_names = field_names or model._meta.get_all_field_names()
         for field in field_names:
@@ -80,7 +81,7 @@ class InplaceTestCase(TestCase):
         client = client or self.__client_login()
         obj = obj or model.objects.all()[0]
         self.assertEqual(model, obj.__class__)
-        module_name = model._meta.module_name
+        module_name = get_module_name(model)
         app_label = model._meta.app_label
         field_names = field_names or model._meta.get_all_field_names()
         for field_name in field_names:
@@ -216,7 +217,7 @@ class InplaceTestCase(TestCase):
         obj = Resource.objects.all()[0]
 
         data = {'app_label': obj.__class__._meta.app_label,
-                'module_name': obj.__class__._meta.module_name,
+                'module_name': get_module_name(obj.__class__),
                 'field_name': 'name',
                 'value': '""',
                 'obj_id': obj.pk,

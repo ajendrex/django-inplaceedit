@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 
-# Copyright (c) 2010-2013 by Yaco Sistemas <goinnn@gmail.com> or <pmartin@yaco.es>
-#
+# -*- coding: utf-8 -*-
+# Copyright (c) 2010-2013 by Yaco Sistemas <goinnn@gmail.com>
+#               2015 by Pablo Martín <goinnn@gmail.com>
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Lesser General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
@@ -26,6 +27,9 @@ if len(sys.argv) == 1:
     os.environ[ENVIRONMENT_VARIABLE] = 'testing.settings'
 else:
     os.environ[ENVIRONMENT_VARIABLE] = sys.argv[1]
+
+if hasattr(django, 'setup'):
+    django.setup()
 
 if django.VERSION[0] == 1 and django.VERSION[1] <= 5:
     management.call_command('test', 'unit_tests')

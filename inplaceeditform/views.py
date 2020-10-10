@@ -1,5 +1,6 @@
-# Copyright (c) 2010-2013 by Yaco Sistemas <goinnn@gmail.com> or <pmartin@yaco.es>
-#
+# -*- coding: utf-8 -*-
+# Copyright (c) 2010-2013 by Yaco Sistemas <goinnn@gmail.com>
+#               2015 by Pablo Martín <goinnn@gmail.com>
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Lesser General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
@@ -54,7 +55,10 @@ def save_ajax(request):
         messages = []  # The error is for another field that you are editing
         for field_name_error, errors_field in form.errors.items():
             for error in errors_field:
-                messages.append(u"%s: %s" % (field_name_error, error))
+                if field_name_error == '__all__':  # The error is model clean type
+                    messages.append(u"Error: %s" % error)
+                else:
+                    messages.append(u"%s: %s" % (field_name_error, error))
         message_i18n = ', '.join(messages)
         return _get_http_response({'errors': message_i18n})
     except ValidationError as error:  # The error is for a field that you are editing

@@ -1,5 +1,6 @@
-# Copyright (c) 2010-2013 by Yaco Sistemas <goinnn@gmail.com> or <pmartin@yaco.es>
-#
+# -*- coding: utf-8 -*-
+# Copyright (c) 2010-2013 by Yaco Sistemas <goinnn@gmail.com>
+#               2015 by Pablo Martín <goinnn@gmail.com>
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Lesser General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
@@ -20,14 +21,14 @@ import sys
 from copy import deepcopy
 
 from django.conf import settings
-from django.core.urlresolvers import reverse
 from django.contrib.admin.widgets import AdminDateWidget, AdminSplitDateTime, AdminTimeWidget
 from django.forms.models import modelform_factory
 from django.template.loader import render_to_string
+from django.urls import reverse
 from django.utils.formats import number_format
 
 from inplaceeditform import settings as inplace_settings
-from inplaceeditform.commons import apply_filters, import_module, has_transmeta, get_static_url, get_admin_static_url
+from inplaceeditform.commons import apply_filters, import_module, has_transmeta, get_static_url, get_admin_static_url, get_module_name
 from inplaceeditform.perms import SuperUserPermEditInline
 
 
@@ -125,7 +126,7 @@ class BaseAdaptorField(object):
     def render_value(self, field_name=None):
         field_name = field_name or self.field_name_render
         value = getattr(self.obj, field_name)
-        if callable(value):
+        if callable(value) and not isinstance(self, AdaptorManyToManyField):
             value = value()
         return apply_filters(value, self.filters_to_show, self.loads)
 
@@ -231,7 +232,7 @@ class BaseAdaptorField(object):
         widget_options = self.config and self.config.get('widget_options', {})
         auto_height = self.get_auto_height()
         auto_width = self.get_auto_width()
-        if not 'style' in attrs:
+        if 'style' not in attrs:
             style = ''
             height = self.get_height(widget_options)
             width = self.get_width(widget_options)

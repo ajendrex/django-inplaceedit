@@ -1,5 +1,6 @@
-# Copyright (c) 2010-2013 by Yaco Sistemas <goinnn@gmail.com> or <pmartin@yaco.es>
-#
+# -*- coding: utf-8 -*-
+# Copyright (c) 2010-2013 by Yaco Sistemas <goinnn@gmail.com>
+#               2015 by Pablo Martín <goinnn@gmail.com>
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Lesser General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
@@ -22,7 +23,7 @@ def read(*rnames):
 
 setup(
     name="django-inplaceedit",
-    version="1.3.0",
+    version="1.4.1",
     author="Pablo Martin",
     author_email="goinnn@gmail.com",
     description="Django application that allows you to inline edition of some data from the database",
@@ -36,7 +37,7 @@ setup(
     ],
     license="LGPL 3",
     keywords="django,inplace,inline edit,inline form,inline,inplace edit,inplace form,ajax",
-    url='https://github.com/Yaco-Sistemas/django-inplaceedit',
+    url='https://github.com/django-inplaceedit/django-inplaceedit',
     packages=find_packages('.'),
     include_package_data=True,
     zip_safe=False,

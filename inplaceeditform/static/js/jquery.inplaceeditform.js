@@ -1,3 +1,6 @@
+/* Copyright (c) 2010-2013 by Yaco Sistemas <goinnn@gmail.com>
+                 2015 by Pablo Martin <goinnn@gmail.com>
+*/
 (function ($) {
     "use strict";
     var attr_old = $.fn.attr;
@@ -395,6 +398,7 @@
                 var configTag = $(that).find(self.configSelector);
                 var config = configTag.attr();
                 var tags = $(self.methods.removeStartSpaces(response.field_render));
+                self.methods.transformField(tags);
                 $(tags).insertAfter($(that));
                 $(that).hide();
                 var head = $("head")[0];
@@ -526,6 +530,8 @@
                 link.removeClass("linkInplaceEdit");
                 link.removeAttr("hrefinplaceedit");
             });
+        },
+        transformField: function (tags) {
         },
         treatmentStatusError: function (response) {
             if (response.status === 0) {
