@@ -16,8 +16,8 @@
 import json
 
 from django import template
-from django.core.urlresolvers import reverse
 from django.template import Library, Variable
+from django.urls import reverse
 
 from inplaceeditform import settings as inplace_settings
 from inplaceeditform.commons import get_adaptor_class, get_static_url, get_admin_static_url
