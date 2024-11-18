@@ -14,14 +14,10 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this programe.  If not, see <http://www.gnu.org/licenses/>.
 
-try:
-    from django.conf.urls import url
-except ImportError:  # Django < 1.4
-    from django.conf.urls.defaults import url
-
+from django.urls import re_path
 from inplaceeditform import views
 
 urlpatterns = [
-    url(r'^save/$', views.save_ajax, name='inplace_save'),
-    url(r'^get_field/$', views.get_field, name='inplace_get_field')
+    re_path(r'^save/$', views.save_ajax, name='inplace_save'),
+    re_path(r'^get_field/$', views.get_field, name='inplace_get_field')
 ]
